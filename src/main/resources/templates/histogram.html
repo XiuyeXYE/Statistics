@@ -44,6 +44,7 @@
 				break;
 			}
 			p.moveTo(tick_sx,tick_sy).lineTo(tick_ex,tick_ey).line();
+			p.text(i,tick_sx-20,tick_sy+5);
 		}
 		//yAxis
 		for(var i=0;i<y_num;i++){
@@ -56,6 +57,22 @@
 			}
 			p.moveTo(tick_sx,tick_sy).lineTo(tick_ex,tick_ey).line();
 		}
+		
+		for(var i=0;i<y_num;i++){
+			var tick_sx = dx + x_interval*i;
+			var tick_sy = h_y;
+			var tick_ex = tick_sx;
+			var tick_ey = tick_sy - tick_len;;
+			if(tick_ex>w_x){
+				break;
+			}
+			p.lineWidth(2)
+			.moveTo(tick_sx,tick_sy)
+			.lineTo(tick_ex,tick_ey-Math.random()*tick_ey)
+			.line();
+		}
+		
+		
 		
 	});
 
