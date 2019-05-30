@@ -6,20 +6,56 @@
 </head>
 <body>
 
-<div style="text-align: center;">
-	<canvas id='can'></canvas>
-</div>
-<script type="text/javascript" src="js/xy/core/xy.js"></script>
+	<div style="text-align: center;">
+		<canvas id='can'></canvas>
+	</div>
+	<script type="text/javascript" src="js/xy/core/xy.js"></script>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 	var p = xy.EMPTY_VALUES.EMPTY_STRING;
 	xy(()=>{
 		let c = xy.Canvas.from('#can');
 		c.size(810,500).css('border','1px solid green');
 		p = c.pen();
 		
+		let w = c.width();
+		let h = c.height();
 		
-		
+		let dx = 30;
+		let dy = 30;
+		let x = dx;
+		let h_y = h-dy;
+		let w_x = w-dx;
+		p.clear().lineWidth(2).lineJoin('miter').moveTo(dx,dy).lineTo(x,h_y);
+		p.lineTo(w_x,h_y).line();
+		let x_interval = 10;
+		let y_interval = 10;
+		let x_num = w_x//x_interval;
+		let y_num = h_y//y_interval;
+		let tick_len = 5;
+		//xAxis
+		for(var i=0;i<x_num;i++){
+			
+			var tick_sx = dx;
+			var tick_sy = h_y - y_interval*i;
+			var tick_ex = tick_sx + tick_len;
+			var tick_ey = tick_sy;
+			if(tick_ey<dy){
+				break;
+			}
+			p.moveTo(tick_sx,tick_sy).lineTo(tick_ex,tick_ey).line();
+		}
+		//yAxis
+		for(var i=0;i<y_num;i++){
+			var tick_sx = dx + x_interval*i;
+			var tick_sy = h_y;
+			var tick_ex = tick_sx;
+			var tick_ey = tick_sy - tick_len;;
+			if(tick_ex>w_x){
+				break;
+			}
+			p.moveTo(tick_sx,tick_sy).lineTo(tick_ex,tick_ey).line();
+		}
 		
 	});
 
