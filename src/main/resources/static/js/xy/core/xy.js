@@ -1961,7 +1961,7 @@
             // this.p = p;
             this.o(p);
         },
-
+        
         create: function (c) {
             if (pnl1(arguments)) {
                 var createFunctionStr = 'create' + c;
@@ -2246,8 +2246,6 @@
         clear: function () {
             return this.clearRect(0, 0, this.canvas().width(), this.canvas().height());
         },
-
-
 
     };
     impl(pen, pen_impl);
