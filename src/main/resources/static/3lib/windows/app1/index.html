@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello World!</title>
+    <style type="text/css">
+        .c1 {
+            width: 500px;
+            height: 600px;
+            background-color: red;
+        }
+
+        .c2 {
+            border: 2px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello World!</h1>
+    <div id="out1"></div>
+    <div id="out2"></div>
+
+    <script>
+        // Create an empty context menu
+        var menu = new nw.Menu();
+
+        // Add some items with label
+        menu.append(new nw.MenuItem({
+            label: 'Item A',
+            click: function () {
+                alert('You have clicked at "Item A"');
+            }
+        }));
+        menu.append(new nw.MenuItem({ label: 'Item B' }));
+        menu.append(new nw.MenuItem({ type: 'separator' }));
+        menu.append(new nw.MenuItem({ label: 'Item C' }));
+
+        // Hooks the "contextmenu" event
+        document.body.addEventListener('contextmenu', function (ev) {
+            // Prevent showing default context menu
+            ev.preventDefault();
+            // Popup the native context menu at place you click
+            menu.popup(ev.x, ev.y);
+
+            return false;
+        }, false);
+
+    </script>
+
+    <script type="text/javascript" src="xy.js"></script>
+    <script type="text/javascript">
+        xy.ready((e) => {
+            
+            let elem = xy.byId('out1');
+            elem.css('width', '700px');
+            elem.css('height', '500px');
+            elem.css('background-color', "#ccc");
+            xy.d('div').onEvent('click', (e) => {
+                alert('First div click:', e);
+            });
+            xy.d('div').onEvent('click', (e) => {
+                alert('Second div click:', e);
+            });
+            xy.d('div').click((e) => {
+                alert('ALL Three div click:', e);
+            });
+            xy.d('div').cls('c1').cls('c2');
+        }
+
+        );
+        xy((e) => {
+            
+            xy.d('body').css('width','100%').css('height','100%');
+        });
+
+    </script>
+</body>
+
+</html>
