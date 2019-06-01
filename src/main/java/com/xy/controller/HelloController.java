@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.xiuye.util.log.LogUtil;
+
 @Controller
 public class HelloController {
 	
@@ -20,6 +22,9 @@ public class HelloController {
     @RequestMapping("/")
     public String home(HttpServletRequest request, Model model) {
 
+		LogUtil.log("=======================");
+		LogUtil.log("This page is home page!");
+		LogUtil.log("=======================");
         String name = "World";
 
         Subject subject = SecurityUtils.getSubject();
@@ -37,7 +42,9 @@ public class HelloController {
         }
 
         model.addAttribute("name", name);
-
+        LogUtil.log("=======================");
+        LogUtil.log("Home page OK!");
+        LogUtil.log("=======================");
         return "hello";
     }
 }

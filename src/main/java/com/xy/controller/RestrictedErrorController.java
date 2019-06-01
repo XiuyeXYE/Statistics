@@ -5,17 +5,27 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.error.ErrorAttributes;
-import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.boot.autoconfigure.web.ErrorProperties;
+import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
+import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.context.request.ServletWebRequest;
 
-public class RestrictedErrorController implements ErrorController{
+import com.xiuye.util.cls.TypeUtil;
+
+public class RestrictedErrorController extends BasicErrorController {
+
+	public RestrictedErrorController(org.springframework.boot.web.servlet.error.ErrorAttributes errorAttributes,
+			ErrorProperties errorProperties) {
+		super(errorAttributes, errorProperties);
+	}
+
 	private static final String ERROR_PATH = "/error";
 
 	@Autowired
-	private ErrorAttributes errorAttributes;
+	private DefaultErrorAttributes errorAttributes;
 
 	@Override
 	public String getErrorPath() {
@@ -24,7 +34,8 @@ public class RestrictedErrorController implements ErrorController{
 
 	@RequestMapping(ERROR_PATH)
 	String error(HttpServletRequest request, Model model) {
-		Map<String, Object> errorMap = errorAttributes.getErrorAttributes(new ServletWebRequest(request), false);
+		Map<String, Object> errorMap = errorAttributes
+				.getErrorAttributes(TypeUtil.newInstance(ServletWebRequest::new, request), false);
 		model.addAttribute("errors", errorMap);
 		return "error";
 	}
