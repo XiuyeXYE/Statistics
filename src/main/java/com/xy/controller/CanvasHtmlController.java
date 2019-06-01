@@ -14,7 +14,7 @@ public class CanvasHtmlController {
 
 	@RequestMapping("canvas1")
 	public String canvas1() {
-		return "canvas1";
+		return "canvas/canvas1";
 	}
 
 }
