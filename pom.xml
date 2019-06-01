@@ -80,16 +80,32 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>2.0.1</version>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-spring</artifactId>
 			<version>1.4.1</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring-boot-web-starter</artifactId>
+			<version>1.4.1</version>
+		</dependency>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>xiuye</groupId>
+			<artifactId>util</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/util.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>
