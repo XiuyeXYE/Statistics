@@ -8,8 +8,13 @@ public class CanvasHtmlController {
 
 	@RequestMapping("histogram")
 	public String histogram() {
-		
+
 		return "histogram";
 	}
-	
+
+	@RequestMapping("canvas1")
+	public String canvas1() {
+		return "canvas1";
+	}
+
 }
