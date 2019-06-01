@@ -104,7 +104,7 @@
 			<artifactId>util</artifactId>
 			<version>1.0.0</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/resources/lib/util.jar</systemPath>
+			<systemPath>${project.basedir}/src/main/resources/BOOT-INF/lib/util.jar</systemPath>
 		</dependency>
 	</dependencies>
 
