@@ -20,6 +20,10 @@
     var setTimeout = window.setTimeout;
     //清理
     var clearTimeout = window.clearTimeout;
+    //history
+    var history = window.history;
+
+    //history
 
     var JSON = window.JSON;
     /**
@@ -2331,6 +2335,56 @@
      */
 
     /**
+     * 
+     * extension
+     * 
+     */
+
+    function opr() {
+        this.history = history;
+        this.length = this.history.length;
+    }
+    var opr_impl = {
+        push: function (data, title, url) {
+            this.history.pushState(data, title, url);
+            return this;
+        },
+        replace: function (data, title, url) {
+            this.history.replaceState(data, title, url);
+            return this;
+        },
+        add: function (c) {
+            dom.of(window).on("popstate", c);
+            return this;
+        },
+        go: function (n) {
+            this.history.go(n);
+        },
+        back: function () {
+            this.history.back();
+        },
+        forward: function () {
+            this.history.forward();
+        }
+    };
+
+    impl(opr, opr_impl);
+
+    //data-set
+    var dom_impl4 = {
+        data: function (attr) {
+            if (this.exist() && oExist(this.node.dataset)) {
+                return this.node.dataset[attr];
+            }
+        }
+    };
+    impl(dom, dom_impl4);
+
+
+    /**
+     * end
+     */
+    /**
      * global xy interfaces
      */
 
@@ -2363,6 +2417,8 @@
     var xy = function (p) {
         if (isFunction(p)) {
             dom.of(document).on('DOMContentLoaded', p);
+        } else if (strNonEmpty(p)) {
+            return xy.d(p);
         }
     };
     static_impl(xy, of_interface, extend_interface);
@@ -2472,6 +2528,7 @@
         std_interfaces: public_common_interfaces,
         dom_interfaces: dom_interfaces,
         EMPTY_VALUES: EMPTY_VALUES,
+        OPR: new opr(),
     };
 
     xy.extend(static_values);
