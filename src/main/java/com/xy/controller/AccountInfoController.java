@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.xiuye.util.log.LogUtil;
+
 @Controller
 public class AccountInfoController {
 
@@ -24,7 +26,7 @@ public class AccountInfoController {
         if (principalCollection != null && !principalCollection.isEmpty()) {
             name = principalCollection.getPrimaryPrincipal().toString();
         }
-
+        LogUtil.log("account-info=",name);
         model.addAttribute("name", name);
 
         return "account-info";
