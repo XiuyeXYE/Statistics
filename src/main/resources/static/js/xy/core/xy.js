@@ -2341,16 +2341,25 @@
      */
 
     function opr() {
-        this.history = history;
-        this.length = this.history.length;
+        // this.history = history;
+        this.o(history);
+        Object.defineProperty(this,'length',{
+            get:function(){
+                return history.length;
+            }
+        });
+        
     }
+    impl(opr,invoke_interface)
     var opr_impl = {
         push: function (data, title, url) {
-            this.history.pushState(data, title, url);
+            // this.history.pushState(data, title, url);
+            this.invoke('pushState',arguments);
             return this;
         },
         replace: function (data, title, url) {
-            this.history.replaceState(data, title, url);
+            // this.history.replaceState(data, title, url);
+            this.invoke('replaceState',arguments);
             return this;
         },
         add: function (c) {
@@ -2358,13 +2367,19 @@
             return this;
         },
         go: function (n) {
-            this.history.go(n);
+            // this.history.go(n);
+            this.invoke('go',arguments);
+            return this;
         },
         back: function () {
-            this.history.back();
+            // this.history.back();
+            this.invoke('back',arguments);
+            return this;
         },
         forward: function () {
-            this.history.forward();
+            // this.history.forward();
+            this.invoke('forward',arguments);
+            return this;
         }
     };
 
