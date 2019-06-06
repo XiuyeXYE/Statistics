@@ -12,7 +12,4 @@ public class XyApplication {
 		SpringApplication.run(XyApplication.class, args);
 	}
 
-	
-	
-
 }
