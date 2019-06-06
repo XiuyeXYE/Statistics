@@ -100,9 +100,10 @@ xy((e)=>{
 //				"Content-Type":"application/json;charset=UTF-8",
 //				"enctype":"multipart/form-data"
 //			},
-//			dataType:'json',
+			dataType:'json',
 			success(d){
 				console.log(d);
+				location.href = d.data.url;
 			}
 		});
 	},true);
