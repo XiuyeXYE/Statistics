@@ -1,17 +1,12 @@
 package com.xy.config;
 
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.realm.text.TextConfigurationRealm;
 import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
 import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
-import org.apache.shiro.subject.Subject;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.ModelAttribute;
-
-import com.xiuye.util.log.LogUtil;
 
 @Configuration
 public class ShiroConfiguration {
@@ -45,10 +40,6 @@ public class ShiroConfiguration {
 		return chainDefinition;
 	}
 
-	@ModelAttribute(name = "subject")
-	public Subject subject() {
-		LogUtil.log("@ModelAttribute execute");
-		return SecurityUtils.getSubject();
-	}
+	
 	
 }

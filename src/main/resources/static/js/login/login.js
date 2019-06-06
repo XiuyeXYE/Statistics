@@ -4,7 +4,7 @@ xy((e)=>{
 	
 	
 	
-//	let pages = ['signInPage','registerPage','fbkPage'];
+// let pages = ['signInPage','registerPage','fbkPage'];
 	let pageM = new Map();
 	pageM.set('/signInPage',{panel:'login',active:'l'});
 	pageM.set('/registerPage',{panel:'reg',active:'r'});
@@ -28,7 +28,7 @@ xy((e)=>{
 				xy("#navigator li[data-name="+pageInfo.active+"]").cls('active',false);
 			}
 		}
-	},true/*onclick*/);
+	},true/* onclick */);
 	
 	function recovery(){
 		let path = location.pathname;
@@ -49,7 +49,7 @@ xy((e)=>{
 	recovery();
 	
 	xy.OPR.add((e)=>{
-//		console.log(e);
+// console.log(e);
 		recovery();
 	});
 	
@@ -96,14 +96,18 @@ xy((e)=>{
 			url:'signIn',
 			type:'post',
 			data:formData,
-//			headers:{
-//				"Content-Type":"application/json;charset=UTF-8",
-//				"enctype":"multipart/form-data"
-//			},
+// headers:{
+// "Content-Type":"application/json;charset=UTF-8",
+// "enctype":"multipart/form-data"
+// },
 			dataType:'json',
 			success(d){
-				console.log(d);
+				console.log('success=',d);
 				location.href = d.data.url;
+			},
+			error(d,xhr){
+				console.log('error=',d);
+				
 			}
 		});
 	},true);

@@ -1,22 +1,23 @@
 package com.xy.controller;
 
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import com.xiuye.util.log.LogUtil;
+import com.xiuye.util.cls.TypeUtil;
 
 @Controller
 public class UserHtmlController {
 
 	@RequiresAuthentication
-	@RequestMapping("accountInfo")
+	@GetMapping("accountInfo")
 	public String getUserInfo(Model model) {
-		Subject subject = SecurityUtils.getSubject();
+
+		Subject subject = TypeUtil.dynamic_cast(model.asMap().get("subject")); // = SecurityUtils.getSubject();
+
 		String name = "World";
 		PrincipalCollection principalCollection = subject.getPrincipals();
 

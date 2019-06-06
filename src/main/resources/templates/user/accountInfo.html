@@ -24,6 +24,7 @@
 </head>
 <body>
 	<div class="container">
+		<h1 th:text="'subject.authenticated='+${subject.authenticated}"></h1>
 		<h1 th:text="'Account Info Page for: ' + ${name} + '!'" />
 
 		<a th:href="@{/signInPage}" class="btn btn-primary">Sign in</a>
