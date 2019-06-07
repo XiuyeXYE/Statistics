@@ -10,7 +10,7 @@ import com.xy.processor.XYBeanProcessor;
 public class BeanConfiguration {
 
 	@Bean
-	public XYBeanProcessor xyBeanProcessor() {
+	public static XYBeanProcessor xyBeanProcessor() {
 		return TypeUtil.newInstance(XYBeanProcessor::new);
 	}
 
