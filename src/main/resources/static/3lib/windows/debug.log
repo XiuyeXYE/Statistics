@@ -1,0 +1,4 @@
+[0607/150540.560:ERROR:main_dll_loader_win.cc(146)] Failed to load NW DLL from D:\programming\DevelopingProjects\Statistics\src\main\resources\static\3lib\windows\nw.dll: %1 不是有效的 Win32 应用程序。 (0xC1)
+[0607/150551.444:ERROR:main_dll_loader_win.cc(146)] Failed to load NW DLL from D:\programming\DevelopingProjects\Statistics\src\main\resources\static\3lib\windows\nw.dll: %1 不是有效的 Win32 应用程序。 (0xC1)
+[0607/150620.413:ERROR:main_dll_loader_win.cc(146)] Failed to load NW DLL from D:\programming\DevelopingProjects\Statistics\src\main\resources\static\3lib\windows\nw.dll: %1 不是有效的 Win32 应用程序。 (0xC1)
+[0607/150628.198:ERROR:main_dll_loader_win.cc(146)] Failed to load NW DLL from D:\programming\DevelopingProjects\Statistics\src\main\resources\static\3lib\windows\nw.dll: %1 不是有效的 Win32 应用程序。 (0xC1)
