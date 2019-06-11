@@ -14,19 +14,21 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.xiuye.util.cls.TypeUtil;
 import com.xy.bean.MapResult;
 import com.xy.util.BeanFactoryUtil;
 
 
-@ControllerAdvice
+//@ControllerAdvice
+@RestControllerAdvice
 public class AdviceConfiguration {
 
 	//权限
 	@ExceptionHandler(AuthorizationException.class)
 	@ResponseStatus(HttpStatus.FORBIDDEN)
-	@ResponseBody
+//	@ResponseBody
 	public MapResult handleAuthorizationException(AuthorizationException e, Model model) {
 
 		// you could return a 404 here instead (this is how github handles 403, so the
@@ -46,7 +48,7 @@ public class AdviceConfiguration {
 	//身份认证
 	@ExceptionHandler(AuthenticationException.class)
 	@ResponseStatus(HttpStatus.FORBIDDEN)
-	@ResponseBody
+//	@ResponseBody
 	public MapResult handleAuthenticationException(AuthenticationException e, Model model) {
 
 		// you could return a 404 here instead (this is how github handles 403, so the
