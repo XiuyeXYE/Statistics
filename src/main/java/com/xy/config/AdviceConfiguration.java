@@ -9,10 +9,8 @@ import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.subject.Subject;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -67,7 +65,7 @@ public class AdviceConfiguration {
 	//身份认证
 	@ExceptionHandler(UnauthenticatedException.class)
 	@ResponseStatus(HttpStatus.FORBIDDEN)
-	@ResponseBody
+//	@ResponseBody
 	public MapResult handleUnauthenticatedException(UnauthenticatedException e, Model model) {
 		
 		// you could return a 404 here instead (this is how github handles 403, so the
